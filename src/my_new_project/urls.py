@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+
+def get_profile(request):
+    """ view which get request and send user in response """
+    return HttpResponse(str(request.user))
+
+urlpatterns = [
+    path('profile/', get_profile),
 ]
